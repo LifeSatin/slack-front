@@ -1,0 +1,10 @@
+export type Member = { userId: number; displayName: string };
+export type ChatRoom = { roomId: number; title: string; createdBy: number; createdAt: string; members: Member[] };
+export type ChatMessage = { messageId: number; roomId: number; senderId: number; senderName: string; sequence: number; clientMessageId: string; content: string; createdAt: string; duplicated: boolean };
+export type Phase = 'analyzing' | 'checking_calendars' | 'negotiating' | 'revalidating';
+export type NegotiationProgress = { type: 'NEGOTIATION_PROGRESS'; roomId: number; sessionId: string; phase: Phase };
+export type Slot = { start: string; end: string };
+export type NegotiationResult = { type: 'NEGOTIATION_RESULT'; roomId: number; sessionId: string; status: 'converged' | 'failed'; slot: Slot | null };
+export type AgentEvent = { type: 'AGENT_EVENT'; id: number; roomId: number; sessionId: string; eventType: 'MESSAGE' | 'PROPOSE' | 'ACCEPT' | 'REJECT'; message: string; createdAt: string };
+export type StompError = { message: string; occurredAt: string };
+export type NegotiationEvent = NegotiationProgress | NegotiationResult;

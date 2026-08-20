@@ -1,0 +1,29 @@
+display_information:
+  name: Meet:U
+  description: Google Calendar 기반 팀 일정 조율 봇
+  background_color: "#4A154B"
+features:
+  bot_user:
+    display_name: Meet:U
+    always_online: false
+  slash_commands:
+    - command: /meetu
+      url: https://YOUR_PUBLIC_HOST/slack/events
+      description: Meet:U 일정 조율
+      usage_hint: help | connect | status | init | sync | schedule | retry
+      should_escape: false
+oauth_config:
+  scopes:
+    bot:
+      - commands
+      - chat:write
+      - users:read
+      - channels:read
+      - groups:read
+settings:
+  interactivity:
+    is_enabled: true
+    request_url: https://YOUR_PUBLIC_HOST/slack/events
+  socket_mode_enabled: false
+  org_deploy_enabled: false
+  token_rotation_enabled: false
